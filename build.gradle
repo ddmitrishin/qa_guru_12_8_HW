@@ -1,0 +1,37 @@
+plugins {
+    id "java-library"
+}
+
+repositories {
+    mavenCentral()
+}
+
+def selenideVersion = "6.4.0",
+    junitVersion = "5.8.2",
+    slf4jVersion = "1.7.36",
+    assertjVersion = "3.22.0",
+    pdfTestVersion = "1.7.0",
+    xlsTestVersion = "1.4.0",
+    opencsvVersion = "5.6",
+    gsonVersion = "2.9.0"
+
+dependencies {
+    testImplementation(
+            "com.codeborne:selenide:$selenideVersion",
+            "org.junit.jupiter:junit-jupiter:$junitVersion",
+            "org.slf4j:slf4j-simple:$slf4jVersion",
+            "org.assertj:assertj-core:$assertjVersion",
+            "com.codeborne:pdf-test:$pdfTestVersion",
+            "com.codeborne:xls-test:$xlsTestVersion",
+            "com.opencsv:opencsv:$opencsvVersion",
+            "com.google.code.gson:gson:$gsonVersion"
+    )
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+test {
+    useJUnitPlatform()
+}
